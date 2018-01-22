@@ -30,7 +30,7 @@ module SmokyPing
     def write(hostname, loss, min, avg, max)
       @influx.write_point(
         table,
-        values: { min: min, avg: avg, max: max, loss: loss },
+	values: { min: min.to_f, avg: avg.to_f, max: max.to_f, loss: loss.to_f },
         tags: { host: hostname }
       )
     end
